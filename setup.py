@@ -1,5 +1,19 @@
-import setuptools
+from __future__ import absolute_import, division, print_function
+from setuptools import setup, find_packages
+import sys
+from os import path
+from io import open
 
+DESCRIPTION = ('People Data Labs Query Tool')
+
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    LONG_DESCRIPTION = f.read()
+
+
+setup_requires = (
+    ['pytest-runner'] if any(x in sys.argv for x in ('pytest','test','ptr')) else []
+)
 
 
 setuptools.setup(
@@ -7,9 +21,9 @@ setuptools.setup(
     version='0.1.0',
     author='Will Rubel',
     author_email='willrubel@gmail.com',
-    description='People Data Labs Query Tool',
+    description=DESCRIPTION,
     keywords='People Data Labs',
-    long_description='People Data Labs Query Tool',
+    long_description=LONG_DESCRIPTION,
     url='https://github.com/rubelw/pdl',
     project_urls={
         'Documentation': 'https://github.com/rubelw/pdl',
@@ -21,7 +35,7 @@ setuptools.setup(
     },
     package_dir={'': 'src'},
     include_package_data=True,
-    packages=setuptools.find_packages(where='src'),
+    packages=find_packages(where='src'),
     classifiers=[
         # see https://pypi.org/classifiers/
         'Programming Language :: Python :: 3',
