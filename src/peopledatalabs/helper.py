@@ -6,6 +6,8 @@ import subprocess
 import sys
 import json
 import inspect
+import urllib.request as urllib2
+from distutils.version import StrictVersion
 
 def lineno():
     """Returns the current line number in our program."""
@@ -37,28 +39,53 @@ class helper(object):
         if self.debug:
             print(str(data)+lineno())
 
-        for d in data:
+        #for d in data:
+
+        #    if self.debug:
+        #        print(str(d)+lineno())
+
+        #    if ':' in d:
+        #        (key, value) = str(d).split(":")
+
+
+        #        if key == 'Version':
+
+
+        #            if value.strip() != version.strip():
+        #                if self.debug:
+        #                    print('Need to install new version of pdl'+lineno())
+        #                    print('Current version: '+str(value)+lineno())
+        #                    print('Newest version: '+str(version)+lineno())
+        #                self.upgrade_pdl()
+        #            else:
+        #                if self.debug:
+        #                    print('Version is up-to-date'+lineno())
+        #            break
+
+        url = "https://pypi.org/pypi/%s/json" % ('peopledatalabs',)
+        data = json.load(urllib2.urlopen(urllib2.Request(url)))
+        versions = list(data["releases"].keys())
+
+        if self.debug:
+            print(str(versions)+lineno())
+
+
+        latest_version = versions[-1]
+
+
+        if self.debug:
+            print('latest version: '+str(latest_version)+lineno())
+
+        if latest_version.strip() != version.strip():
 
             if self.debug:
-                print(str(d)+lineno())
-
-            if ':' in d:
-                (key, value) = str(d).split(":")
-
-
-                if key == 'Version':
-
-
-                    if value.strip() != version.strip():
-                        if self.debug:
-                            print('Need to install new version of pdl'+lineno())
-                            print('Current version: '+str(value)+lineno())
-                            print('Newest version: '+str(version)+lineno())
-                        self.upgrade_pdl()
-                    else:
-                        if self.debug:
-                            print('Version is up-to-date'+lineno())
-                    break
+                print('Need to install new version of pdl'+lineno())
+                print('Latest version: '+str(latest_version)+lineno())
+                print('Current version: '+str(version)+lineno())
+            self.upgrade_pdl()
+        else:
+            if self.debug:
+                print('Version is up-to-date'+lineno())
 
 
 
