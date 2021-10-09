@@ -86,7 +86,8 @@ class helper(object):
             print('upgrading pdl'+lineno())
 
         wd = os.getcwd()
-        os.chdir("~")
+        home = str(Path.home())
+        os.chdir(home)
         reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'install', 'peopledatalabs','--upgrade'])
         os.chdir(wd)
 

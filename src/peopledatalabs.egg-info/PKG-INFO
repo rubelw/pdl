@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: peopledatalabs
-Version: 0.1.11
+Version: 0.1.12
 Summary: People Data Labs Query Tool
 Home-page: https://github.com/rubelw/pdl
 Author: Will Rubel
@@ -40,6 +40,11 @@ Description: # Simple People Data Labs Query Tool
         * Check if virtualenv is installed
         * Create virtualenv named env in ~/.pdl
         * Install peopledatalabs package in virtualenv
+        
+        
+        To run this script:
+        
+        Go to Finder -> Applications -> Utilities ->Terminal and paste the following line at the prompt and press enter
         
         
         ```bash
@@ -90,11 +95,12 @@ Description: # Simple People Data Labs Query Tool
         
         ## Uninstalling
         
-        You can also run by entering the following into Terminal windows:
+        To run this script:
+        
+        Go to Finder -> Applications -> Utilities ->Terminal and paste the following line at the prompt and press enter
         
         ```bash
         bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/uninstall.sh)
-        
         
         ```
         
