@@ -19,8 +19,23 @@ sudo python3 get-pip.py
 
 ## Installation
 
+This script will:
+* Check if xcode is installed
+* Homebrew is installed
+* Update homebrew
+* Ensure python3 and pip3 are installed
+* Create a directory named .pdl in home directory
+* Prompt user for people data labs api key and store in .pdl/config
+* Check if virtualenv is installed
+* Create virtualenv named env in ~/.pdl
+* Install peopledatalabs package in virtualenv
+
+
 ```bash
-pip install peopledatalabs
+
+curl --show-error --retry 5 curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/install.sh |  bash
+
+
 ```
 
 ## Running

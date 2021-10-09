@@ -1,6 +1,6 @@
-Metadata-Version: 1.2
+Metadata-Version: 2.1
 Name: peopledatalabs
-Version: 0.1.1
+Version: 0.1.2
 Summary: People Data Labs Query Tool
 Home-page: https://github.com/rubelw/pdl
 Author: Will Rubel
@@ -70,3 +70,4 @@ Classifier: Programming Language :: Python :: 3 :: Only
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.6
+Description-Content-Type: text/markdown

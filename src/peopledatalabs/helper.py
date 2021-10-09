@@ -1,6 +1,15 @@
 import json
 from pathlib import Path
 import configparser
+from peopledatalabs.__init__ import __version__
+import subprocess
+import sys
+import json
+import inspect
+
+def lineno():
+    """Returns the current line number in our program."""
+    return " - helper - "+str(inspect.currentframe().f_back.f_lineno)
 
 
 class helper(object):
@@ -8,6 +17,58 @@ class helper(object):
 
     def __init__(self, debug=False):
         self.debug = debug
+
+
+    def get_version(self):
+        return __version__
+
+    def check_package(self):
+        print("Checking for current version of pdl")
+
+        version = self.get_version()
+
+        reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'show', 'peopledatalabs'])
+
+        if self.debug:
+            print(str(reqs.decode("utf-8"))+lineno())
+
+        data = str(reqs.decode("utf-8")).split("\n")
+
+        if self.debug:
+            print(str(data)+lineno())
+
+        for d in data:
+
+            if self.debug:
+                print(str(d)+lineno())
+
+            if ':' in d:
+                (key, value) = str(d).split(":")
+
+
+                if key == 'Version':
+
+
+                    if value.strip() != version.strip():
+                        if self.debug:
+                            print('Need to install new version of pdl'+lineno())
+                            print('Current version: '+str(value)+lineno())
+                            print('Newest version: '+str(version)+lineno())
+                    else:
+                        if self.debug:
+                            print('Version is up-to-date'+lineno())
+                    break
+
+
+
+    def upgrade_pdl(self):
+
+        reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'install', 'peopledatalabs','--upgrade'])
+
+        if self.debug:
+            print(str(reqs.decode("utf-8"))+lineno())
+
+
 
 
     def check_if_config_directory_exists(self):
@@ -52,29 +113,70 @@ class helper(object):
                 return config['data']['api_key']
         return None
 
+    def yes_or_no(self, question):
+        answer = input(question + "(y/n): ").lower().strip()
+        print("")
+        while not (answer == "y" or answer == "yes" or \
+                   answer == "n" or answer == "no"):
+            print("Input yes or no")
+            answer = input(question + "(y/n):").lower().strip()
+            print("")
+        if answer[0] == "y":
+            return True
+        else:
+            return False
 
 
     def print_menu(self):  ## Your menu design here
         print(30 * "-", "MENU", 30 * "-")
-        print("1. Phone number with 1(example: 15159860271)")
+        print("1. Phone number with 1(example: 1515986xxxx)")
         print("2. Email")
         print("3. Name,Address,City,State,Zip")
-        print("4. Exit")
+        print("4. Name, City, State")
+        print("5. Name, State")
+        print("6. Exit")
         print(67 * "-")
 
 
-    def pretty_json(self, input):
-        data = {}
-        data['likelihood'] = input['likelihood']
-        data['birth_year'] = input['data']['birth_year']
-        data['birth_date'] = input['data']['birth_date']
-        data['facebook_url'] = input['data']['facebook_url']
-        data['linkedin_url'] = input['data']['linkedin_url']
-        data['personal_emails'] = input['data']['personal_emails']
-        data['emails'] = input['data']['emails']
-        data['mobile_phone'] = input['data']['mobile_phone']
-        data['phone_numbers'] = input['data']['phone_numbers']
+    def pretty_json(self, input, full_output=False):
 
-        json_formatted_str = json.dumps(data, indent=2)
-        print(json_formatted_str)
+        if self.debug:
+            print(json.dumps(input, indent=2))
 
+        if not full_output and 'likelihood' in input:
+            data = {}
+            data['full_name'] = input['data']['full_name']
+            data['first_name'] = input['data']['first_name']
+            data['middle_initial'] = input['data']['middle_initial']
+            data['middle_name'] = input['data']['middle_name']
+            data['last_name'] = input['data']['last_name']
+            data['gender'] = input['data']['gender']
+
+
+            data["location_name"] = input['data']['location_name']
+            data["location_locality"] = input['data']['location_locality']
+            data["location_region"] = input['data']['location_region']
+            data["location_country"] = input['data']['location_country']
+
+            data["location_street_address"] = input['data']['location_street_address']
+            data["location_address_line_2"] = input['data']['location_address_line_2']
+
+            data["location_postal_code"] = input['data']['location_postal_code']
+            data["location_last_updated"] = input['data']['location_last_updated']
+
+
+            data['birth_year'] = input['data']['birth_year']
+            data['birth_date'] = input['data']['birth_date']
+            data['facebook_url'] = input['data']['facebook_url']
+            data['linkedin_url'] = input['data']['linkedin_url']
+            data['work_email'] = input['data']['work_email']
+            data['personal_emails'] = input['data']['personal_emails']
+            data['emails'] = input['data']['emails']
+            data['mobile_phone'] = input['data']['mobile_phone']
+            data['phone_numbers'] = input['data']['phone_numbers']
+
+            json_formatted_str = json.dumps(data, indent=2)
+            print(json_formatted_str)
+        else:
+            json_formatted_str = json.dumps(input, indent=2)
+            print(json_formatted_str)
