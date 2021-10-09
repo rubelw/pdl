@@ -1,13 +1,12 @@
-import json
 from pathlib import Path
 import configparser
 from peopledatalabs.__init__ import __version__
 import subprocess
 import sys
+import os
 import json
 import inspect
 import urllib.request as urllib2
-from distutils.version import StrictVersion
 
 def lineno():
     """Returns the current line number in our program."""
