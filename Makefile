@@ -4,18 +4,10 @@ help:
 	@echo ""
 	@echo " help"
 	@echo "     Display this message"
-	@echo " all"
-	@echo "     clean build artifacts, run test and documentation"
-	@echo " build"
-	@echo "      Run tests and buld a wheel"
 	@echo " clean"
 	@echo "    clean   "
 	@echo " coverage"
 	@echo "    coverage   "
-	@echo " dev_install"
-	@echo "    dev_install   "
-	@echo " doc"
-	@echo "   doc    "
 	@echo " install"
 	@echo "   install    "
 	@echo " lint"
@@ -33,29 +25,16 @@ help:
 
 .PHONY: check_venv
 check_venv:
-	if ndef VIRTUAL_)ENV
-		$(error "! You don't appear to be in a virtual env.")
-	endif
+    if test "$(VIRTUAL_ENV)" == ""; then \
+        echo "VIRTUAL_ENV not set"; \
+        exit 1; \
+    fi
 
-.PHONY: all
-all: check_venv clean test build doc
-
-
-.PHONY: build
-build: check_venv test
-	python setup.py sdist
-	python setup.py bdist_wheel
-	python setup.pyp bdist_egg
 
 .PHONY: test
 test:
-	echo "test"
+	pytest
 
-
-.PHONY: build
-build:
-	echo "build"
-	pip install .
 
 
 .PHONY: clean
@@ -74,7 +53,7 @@ bump:
 
 
 .PHONY: publish
-publish: check_venv test build
+publish: check_venv test
 	python setup.py sdist bdist_wheel
 	twine upload dist/*
 

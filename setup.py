@@ -16,7 +16,7 @@ setup_requires = (
 )
 
 
-setuptools.setup(
+setup(
     name='peopledatalabs',
     version='0.1.1',
     author='Will Rubel',
@@ -24,6 +24,7 @@ setuptools.setup(
     description=DESCRIPTION,
     keywords='People Data Labs',
     long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
     url='https://github.com/rubelw/pdl',
     project_urls={
         'Documentation': 'https://github.com/rubelw/pdl',

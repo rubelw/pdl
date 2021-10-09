@@ -4,6 +4,7 @@ README.md
 setup.cfg
 setup.py
 src/peopledatalabs/__init__.py
+src/peopledatalabs/_version.py
 src/peopledatalabs/helper.py
 src/peopledatalabs/pdl.py
 src/peopledatalabs.egg-info/PKG-INFO
