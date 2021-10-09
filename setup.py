@@ -2,6 +2,7 @@ import setuptools
 
 from peopledatalabs import __version__
 
+version=__version__
 
 setuptools.setup(
     name='peopledatalabs',
