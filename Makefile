@@ -43,7 +43,7 @@ clean:
 	rm -rf dist
 	rm -rf .pytest_cache
 	rm -rf .tox
-	rm -rf .idea
+	rm -rf tests/__pycache__
 
 .PHONY: bump
 bump:
