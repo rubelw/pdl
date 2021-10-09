@@ -1,11 +1,10 @@
 import setuptools
 
-from peopledatalabs import __version__
 
 
 setuptools.setup(
     name='peopledatalabs',
-    version=__version__,
+    version='0.1.0',
     author='Will Rubel',
     author_email='willrubel@gmail.com',
     description='People Data Labs Query Tool',
