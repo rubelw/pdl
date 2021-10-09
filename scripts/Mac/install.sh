@@ -80,4 +80,16 @@ else
 fi
 
 
+# Check if pdl installed in virtual environment
+if [[ ! -e "$HOME/.pdl/env/bin/pdl" ]]; then
+   echo "installing pdl python package"
+   source "$HOME/.pdl/env/bin/activate"
+   pip install pip install peopledatalabs
+
+else
+   echo "pdl python package already installed"
+fi
+
+
+
 echo "Done"

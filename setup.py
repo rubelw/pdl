@@ -1,9 +1,11 @@
 import setuptools
 
+from peopledatalabs import __version__
 
 
 setuptools.setup(
     name='peopledatalabs',
+    version=__version__
     author='Will Rubel',
     author_email='willrubel@gmail.com',
     description='People Data Labs Query Tool',
@@ -33,6 +35,9 @@ setuptools.setup(
         'Operating System :: OS Independent',
     ],
     python_requires='>=3.6',
+    install_requires=[
+        'requests'
+    ],
     entry_points={
          'console_scripts': [  # This can provide executable scripts
              'pdl=peopledatalabs:main',

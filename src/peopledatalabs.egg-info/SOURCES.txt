@@ -10,5 +10,6 @@ src/peopledatalabs.egg-info/PKG-INFO
 src/peopledatalabs.egg-info/SOURCES.txt
 src/peopledatalabs.egg-info/dependency_links.txt
 src/peopledatalabs.egg-info/entry_points.txt
+src/peopledatalabs.egg-info/requires.txt
 src/peopledatalabs.egg-info/top_level.txt
 tests/test_module1.py
