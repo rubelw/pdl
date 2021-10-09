@@ -1,14 +1,11 @@
-__version__ = "0.1.0"
-
+import pkg_resources
 from .pdl import *
-from peopledatalabs._version import __version__
 
-# Append build number to version, if present (on build server)
-try:
-    from peopledatalabs._build import __build__
-except ImportError:
-    pass
-else:
-    __version__ = '{}.{}'.format(__version__, __build__)
+__version__ = pkg_resources.get_distribution('peopledatalabs').version
+__all__= []
 
+__title__ = 'peopledatalabs'
+__version__ = '0.1.0'
+__author__ = 'Will Rubel'
+__author_email__ = "willrubel@gmail.com"
 
