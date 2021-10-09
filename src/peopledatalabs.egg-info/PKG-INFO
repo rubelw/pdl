@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: peopledatalabs
-Version: 0.1.8
+Version: 0.1.9
 Summary: People Data Labs Query Tool
 Home-page: https://github.com/rubelw/pdl
 Author: Will Rubel
@@ -13,6 +13,7 @@ Description: # Simple People Data Labs Query Tool
         
         ## Prerequisites
         
+        
         ### Python 3.6 or above must be installed
         
         For Windows, install according to [Link](https://datatofish.com/install-python/)
@@ -21,12 +22,11 @@ Description: # Simple People Data Labs Query Tool
         ## PIP must be installed
         
         For Windows, install according to [Link](https://phoenixnap.com/kb/install-pip-windows)
-        for Mac
+        for Mac: Use homebrew to install
         
-        ```bash
-        curl -O https://bootstrap.pypa.io/get-pip.py
-        sudo python3 get-pip.py
-        ```
+        ## Mac
+        
+        Xcode and Homebrew should be installed and up-to-date
         
         ## Installation
         
@@ -44,8 +44,7 @@ Description: # Simple People Data Labs Query Tool
         
         ```bash
         
-        curl --show-error --retry 5 curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/install.sh |  bash
-        
+        bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/install.sh)
         
         ```
         
@@ -71,16 +70,42 @@ Description: # Simple People Data Labs Query Tool
         source ~/.pdl/env/bin/activate && pdl
         ```
         
-        Run the program
         
-        ````bash
+        You should receive a menu which looks like the following:
+        
+        
+        ```bash
         ------------------------------ MENU ------------------------------
-        1. Phone number with 1(example: 1515xxxxx1)
+        1. Phone number with 1(example: 1515986xxxx)
         2. Email
         3. Name,Address,City,State,Zip
-        4. Exit
+        4. Name, City, State
+        5. Name, State
+        6. Exit
         -------------------------------------------------------------------
+        Enter your choice [1-5]: 
         ```
+        
+        
+        NOTE: You can also run by entering the following:
+        
+        ```bash
+        bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/run.sh)
+        
+        ```
+        
+        ## Uninstalling
+        
+        You can also run by entering the following into Terminal windows:
+        
+        ```bash
+        bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/uninstall.sh)
+        
+        
+        ```
+        
+        
+        
         
 Keywords: People Data Labs
 Platform: UNKNOWN

@@ -76,12 +76,6 @@ Enter your choice [1-5]:
 ```
 
 
-NOTE: You can also run by entering the following:
-
-```bash
-bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/run.sh)
-
-```
 
 ## Uninstalling
 

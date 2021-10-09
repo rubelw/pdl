@@ -86,7 +86,10 @@ class helper(object):
         if self.debug:
             print('upgrading pdl'+lineno())
 
+        wd = os.getcwd()
+        os.chdir("~")
         reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'install', 'peopledatalabs','--upgrade'])
+        os.chdir(wd)
 
         if self.debug:
             print(str(reqs.decode("utf-8"))+lineno())
