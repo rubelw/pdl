@@ -45,6 +45,9 @@ class helper(object):
 
         version = self.get_version()
 
+        if self.debug:
+            print('Current version: '+str(version)+lineno())
+
         url = "https://pypi.org/pypi/%s/json" % ('peopledatalabs',)
         data = json.load(urllib2.urlopen(urllib2.Request(url)))
         versions = list(data["releases"].keys())
@@ -63,6 +66,12 @@ class helper(object):
                 print('Latest version: '+str(latest_version)+lineno())
                 print('Current version: '+str(version)+lineno())
             self.upgrade_pdl()
+            print('###############################################################')
+            print('###############################################################')
+            print('### Just updated to the most current version - please restart')
+            print('###############################################################')
+            print('###############################################################')
+            sys.exit(1)
         else:
             if self.debug:
                 print('Version is up-to-date'+lineno())

@@ -40,16 +40,24 @@ curl --show-error --retry 5 curl https://raw.githubusercontent.com/rubelw/pdl/ma
 
 ## Running
 
-Set the API key environmental variable
 
 Windows:
 
-Follow example for setting an environmental variable named 'PDL_API_KEY' : [Link](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0)
+To be written
+
 
 Mac:
 
+
+Go to Finder -> Applications -> Utilities ->Terminal
+
+This will open a terminal window.
+
+Type
+
+
 ```bash
-export PDL_API_KEY=xxxx
+source ~/.pdl/env/bin/activate && pdl
 ```
 
 Run the program

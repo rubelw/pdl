@@ -11,6 +11,9 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
 
 
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
 setup_requires = (
     ['pytest-runner'] if any(x in sys.argv for x in ('pytest','test','ptr')) else []
 )
@@ -30,9 +33,7 @@ setup(
         'Documentation': 'https://github.com/rubelw/pdl',
         'Bug Reports':
         'https://github.com/rubelw/pdl/issues',
-        'Source Code': 'https://github.com/rubelw/pdl',
-        # 'Funding': '',
-        # 'Say Thanks!': '',
+        'Source Code': 'https://github.com/rubelw/pdl'
     },
     package_dir={'': 'src'},
     include_package_data=True,
@@ -49,9 +50,7 @@ setup(
         'Operating System :: OS Independent',
     ],
     python_requires='>=3.6',
-    install_requires=[
-        'requests'
-    ],
+    install_requires=required,
     entry_points={
          'console_scripts': [  # This can provide executable scripts
              'pdl=peopledatalabs:main',
