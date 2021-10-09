@@ -18,14 +18,30 @@ class helper(object):
 
 
     def __init__(self, debug=False):
+        """
+        Instantiate object
+        :param debug:
+        """
         self.debug = debug
 
 
     def get_version(self):
+        """
+        Get the installed version
+        :return:
+        """
+        if self.debug:
+            print('get_version'+lineno())
+
         return __version__
 
     def check_package(self):
-        print("Checking for current version of pdl")
+        """
+        Check if the installed package is the most current version
+        :return:
+        """
+        if self.debug:
+            print("Checking for current version of pdl"+lineno())
 
         version = self.get_version()
 
@@ -52,11 +68,15 @@ class helper(object):
                 print('Version is up-to-date'+lineno())
 
 
-
     def upgrade_pdl(self):
+        """
+        Upgrade pdl to most current version
+        :return:
+        """
 
         if self.debug:
             print('upgrading pdl'+lineno())
+
         reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'install', 'peopledatalabs','--upgrade'])
 
         if self.debug:
@@ -64,7 +84,15 @@ class helper(object):
 
 
     def check_if_config_directory_exists(self):
+        """
+        Check if config directory exists in home directory
+        :return:
+        """
         # Windows WindowsPath('C:/Users/XXX')
+
+        if self.debug:
+            print('check if config directory exists'+lineno())
+
         try:
             home = str(Path.home())
             if Path(home+'/.pdl').is_dir():
@@ -78,7 +106,15 @@ class helper(object):
             return False
 
     def check_if_config_file_exists(self):
+        """
+        Check if config file exists
+        :return:
+        """
         # Windows WindowsPath('C:/Users/XXX')
+
+        if self.debug:
+            print('check if config file exists'+lineno())
+
         try:
             home = str(Path.home())
             if Path(home+'/.pdl/config').is_file():
@@ -90,6 +126,13 @@ class helper(object):
             return False
 
     def get_api_key(self):
+        """
+        Get api key from config file
+        :return:
+        """
+        if self.debug:
+            print('get api key'+lineno())
+
         home = str(Path.home())
 
         config = configparser.ConfigParser()
@@ -106,6 +149,12 @@ class helper(object):
         return None
 
     def yes_or_no(self, question):
+        """
+        Prompt user for yes/no questions
+        :param question:
+        :return:
+        """
+
         answer = input(question + "(y/n): ").lower().strip()
         print("")
         while not (answer == "y" or answer == "yes" or \
@@ -120,6 +169,10 @@ class helper(object):
 
 
     def print_menu(self):  ## Your menu design here
+        """
+        Print user menu
+        :return:
+        """
         print(30 * "-", "MENU", 30 * "-")
         print("1. Phone number with 1(example: 1515986xxxx)")
         print("2. Email")
@@ -131,6 +184,13 @@ class helper(object):
 
 
     def pretty_json(self, input, full_output=False):
+        """
+        Output in json format
+        :param input:
+        :param full_output:
+        :return:
+        """
+
 
         if self.debug:
             print(json.dumps(input, indent=2))
