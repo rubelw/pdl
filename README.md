@@ -31,6 +31,11 @@ This script will:
 * Install peopledatalabs package in virtualenv
 
 
+To run this script:
+
+Go to Finder -> Applications -> Utilities ->Terminal and paste the following line at the prompt and press enter
+
+
 ```bash
 
 bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/install.sh)
@@ -79,11 +84,12 @@ Enter your choice [1-5]:
 
 ## Uninstalling
 
-You can also run by entering the following into Terminal windows:
+To run this script:
+
+Go to Finder -> Applications -> Utilities ->Terminal and paste the following line at the prompt and press enter
 
 ```bash
 bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/uninstall.sh)
-
 
 ```
 
