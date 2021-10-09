@@ -54,6 +54,7 @@ class helper(object):
                             print('Need to install new version of pdl'+lineno())
                             print('Current version: '+str(value)+lineno())
                             print('Newest version: '+str(version)+lineno())
+                        self.upgrade_pdl()
                     else:
                         if self.debug:
                             print('Version is up-to-date'+lineno())
@@ -63,12 +64,12 @@ class helper(object):
 
     def upgrade_pdl(self):
 
+        if self.debug:
+            print('upgrading pdl'+lineno())
         reqs = subprocess.check_output([sys.executable, '-m', 'pip', 'install', 'peopledatalabs','--upgrade'])
 
         if self.debug:
             print(str(reqs.decode("utf-8"))+lineno())
-
-
 
 
     def check_if_config_directory_exists(self):
