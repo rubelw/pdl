@@ -2,6 +2,7 @@
 
 ## Prerequisites
 
+
 ### Python 3.6 or above must be installed
 
 For Windows, install according to [Link](https://datatofish.com/install-python/)
@@ -10,12 +11,11 @@ For mac, install according to [Link](https://python.tutorials24x7.com/blog/how-t
 ## PIP must be installed
 
 For Windows, install according to [Link](https://phoenixnap.com/kb/install-pip-windows)
-for Mac
+for Mac: Use homebrew to install
 
-```bash
-curl -O https://bootstrap.pypa.io/get-pip.py
-sudo python3 get-pip.py
-```
+## Mac
+
+Xcode and Homebrew should be installed and up-to-date
 
 ## Installation
 
@@ -33,8 +33,7 @@ This script will:
 
 ```bash
 
-curl --show-error --retry 5 curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/install.sh |  bash
-
+bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/install.sh)
 
 ```
 
@@ -60,6 +59,7 @@ Type
 source ~/.pdl/env/bin/activate && pdl
 ```
 
+
 You should receive a menu which looks like the following:
 
 
@@ -75,12 +75,20 @@ You should receive a menu which looks like the following:
 Enter your choice [1-5]: 
 ```
 
+
+NOTE: You can also run by entering the following:
+
+```bash
+bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/run.sh)
+
+```
+
 ## Uninstalling
 
 You can also run by entering the following into Terminal windows:
 
 ```bash
-curl --show-error --retry 5 curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/uninstall.sh |  bash
+bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/uninstall.sh)
 
 
 ```

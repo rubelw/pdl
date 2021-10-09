@@ -63,7 +63,7 @@ if [[ ! -e "$HOME/.pdl/config" ]]; then
    echo "Enter the People Data Labs API Key"
    read varname
    echo "[data]" > "$HOME/.pdl/config"
-   echo "api_key=${varname}" > "$HOME/.pdl/config"
+   echo "api_key=${varname}" >> "$HOME/.pdl/config"
 else
    echo "Config file already created"
 fi
