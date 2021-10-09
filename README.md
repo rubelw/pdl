@@ -60,13 +60,30 @@ Type
 source ~/.pdl/env/bin/activate && pdl
 ```
 
-Run the program
+You should receive a menu which looks like the following:
 
-````bash
+
+```bash
 ------------------------------ MENU ------------------------------
-1. Phone number with 1(example: 1515xxxxx1)
+1. Phone number with 1(example: 1515986xxxx)
 2. Email
 3. Name,Address,City,State,Zip
-4. Exit
+4. Name, City, State
+5. Name, State
+6. Exit
 -------------------------------------------------------------------
+Enter your choice [1-5]: 
 ```
+
+## Uninstalling
+
+You can also run by entering the following into Terminal windows:
+
+```bash
+curl --show-error --retry 5 curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/uninstall.sh |  bash
+
+
+```
+
+
+
