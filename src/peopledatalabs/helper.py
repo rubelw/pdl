@@ -203,8 +203,10 @@ class helper(object):
 
         api_key = None
         for line in content:
+            line = line.replace(' ','')
             if self.debug:
                 print('line: '+str(line)+lineno())
+
             if 'api_key' in line:
                 (key_name, key_value) = line.split('=')
                 if self.debug:
