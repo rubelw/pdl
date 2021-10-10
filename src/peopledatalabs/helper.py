@@ -201,7 +201,6 @@ class helper(object):
 
         content = file.readlines()
 
-        api_key = None
         for line in content:
             line = line.replace(' ','')
             if self.debug:
