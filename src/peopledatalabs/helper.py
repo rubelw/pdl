@@ -196,25 +196,25 @@ class helper(object):
 
         home = str(Path.home())
 
+        if sys.platform == 'win32':
+            file = open(home+'/.pdl/config','r', encoding='cp1252')
+            content = file.readlines()
+        else:
+            file = open(home+'/.pdl/config')
+            content = file.readlines()
 
-        with open(home+'/.pdl/config') as f:
-            lines = f.readlines()
 
+        for line in content:
             if self.debug:
-                print(str(lines)+lineno())
-                
-            for line in lines:
-                line = line.replace(" ",'')
+                print('line: '+str(line)+lineno())
+
+            if 'api_key' in line:
+                (key_name, key_value) = line.split('=')
                 if self.debug:
-                    print('line: '+str(line)+lineno())
+                    print('name: '+str(key_name)+lineno())
+                    print('value: '+str(key_value)+lineno())
 
-                if 'api_key' in line:
-                    (key_name, key_value) = line.split('=')
-                    if self.debug:
-                        print('name: '+str(key_name)+lineno())
-                        print('value: '+str(key_value)+lineno())
-
-                    return key_value.strip()
+                return key_value.strip()
 
 
 
