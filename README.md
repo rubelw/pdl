@@ -2,6 +2,12 @@
 
 ## Prerequisites
 
+## Get People Data Labs API Key
+
+You must have your API key, because the installation step will prompt you for the API during setup.
+
+You should just copy and paste into the consule when prompted.
+
 
 ### Python 3.6 or above must be installed
 

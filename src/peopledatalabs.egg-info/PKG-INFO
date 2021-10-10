@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: peopledatalabs
-Version: 0.1.26
+Version: 0.1.27
 Summary: People Data Labs Query Tool
 Home-page: https://github.com/rubelw/pdl
 Author: Will Rubel
@@ -44,6 +44,23 @@ Description: # Simple People Data Labs Query Tool
         
         To run this script:
         
+        Open Windows Powershell, and copy and paste the following into the windows and press enter
+        
+        Windows
+        -------
+        
+        ```bash
+        cd $home
+        $WebClient = New-Object System.Net.WebClient
+        $WebClient.DownloadFile("https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Windows/install","$home/install.ps1")
+        ./install.ps1 
+        
+        ```
+        
+        
+        Mac
+        ---
+        
         Go to Finder -> Applications -> Utilities ->Terminal and paste the following line at the prompt and press enter
         
         
@@ -58,7 +75,14 @@ Description: # Simple People Data Labs Query Tool
         
         Windows:
         
-        To be written
+        Open Windows Powershell window and enter the following:
+        
+        ```bash
+        cd $home/.pdl/env
+        .\Scripts\activate
+        pdl
+        
+        ```
         
         
         Mac:
@@ -96,6 +120,23 @@ Description: # Simple People Data Labs Query Tool
         ## Uninstalling
         
         To run this script:
+        
+        
+        Windows
+        -------
+        
+        Open windows powershell terminal and enter the following
+        
+        ```bash
+        cd $home
+        rm -R -Force ./.pdl
+        
+        
+        ```
+        
+        
+        Mac
+        ---
         
         Go to Finder -> Applications -> Utilities ->Terminal and paste the following line at the prompt and press enter
         
