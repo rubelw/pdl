@@ -7,7 +7,6 @@ import os
 import json
 import inspect
 import urllib.request as urllib2
-from distutils.version import LooseVersion
 
 
 def lineno():
@@ -36,6 +35,55 @@ class helper(object):
 
         return __version__
 
+
+    def get_latest_version_from_list(self, data):
+
+        major_versions = []
+        minor_versions = []
+        patch_versions = []
+
+        version_data = {}
+        for d in data:
+            (major, minor, patch) = d.split('.')
+
+            version_data[d] = {}
+            version_data[d]['major'] = int(major)
+            version_data[d]['minor'] = int(minor)
+            version_data[d]['patch'] = int(patch)
+
+            major_versions.append(int(major))
+
+        major_versions = list(dict.fromkeys(major_versions))
+        target_major_version = max(major_versions)
+
+        for d in version_data:
+            if version_data[d]['major'] == target_major_version:
+                minor_versions.append(version_data[d]['minor'])
+
+        minor_versions = list(dict.fromkeys(minor_versions))
+        target_minor_version = max(minor_versions)
+
+
+        for d in version_data:
+            if version_data[d]['major'] == target_major_version:
+                if version_data[d]['minor'] == target_minor_version:
+                    patch_versions.append(version_data[d]['patch'])
+
+        patch_versions = list(dict.fromkeys(patch_versions))
+
+        target_patch_version = max(patch_versions)
+
+        for d in version_data:
+            if version_data[d]['major'] == target_major_version:
+                if version_data[d]['minor'] == target_minor_version:
+                    if version_data[d]['patch'] == target_patch_version:
+                        latest_version = d
+
+        if self.debug:
+            print('latest version: ' + str(latest_version)+lineno())
+
+        return latest_version
+
     def check_package(self):
         """
         Check if the installed package is the most current version
@@ -56,12 +104,7 @@ class helper(object):
         if self.debug:
             print(str(versions)+lineno())
 
-        lv = [LooseVersion(v) for v in versions]
-
-        if self.debug:
-            print('loose versions: '+str(lv)+lineno())
-            
-        latest_version = lv[-1]
+        latest_version = self.get_latest_version_from_list(versions)
 
         if self.debug:
             print('latest version: '+str(latest_version)+lineno())
