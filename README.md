@@ -33,6 +33,23 @@ This script will:
 
 To run this script:
 
+Open Windows Powershell, and copy and paste the following into the windows and press enter
+
+Windows
+-------
+
+```bash
+cd $home
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Windows/install","$home/install.ps1")
+./install.ps1 
+
+```
+
+
+Mac
+---
+
 Go to Finder -> Applications -> Utilities ->Terminal and paste the following line at the prompt and press enter
 
 
@@ -47,7 +64,14 @@ bash <(curl https://raw.githubusercontent.com/rubelw/pdl/master/scripts/Mac/inst
 
 Windows:
 
-To be written
+Open Windows Powershell window and enter the following:
+
+```bash
+cd $home/.pdl/env
+.\Scripts\activate
+pdl
+
+```
 
 
 Mac:
@@ -85,6 +109,23 @@ Enter your choice [1-5]:
 ## Uninstalling
 
 To run this script:
+
+
+Windows
+-------
+
+Open windows powershell terminal and enter the following
+
+```bash
+cd $home
+rm -R -Force ./.pdl
+
+
+```
+
+
+Mac
+---
 
 Go to Finder -> Applications -> Utilities ->Terminal and paste the following line at the prompt and press enter
 
