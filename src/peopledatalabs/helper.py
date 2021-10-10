@@ -197,22 +197,24 @@ class helper(object):
         home = str(Path.home())
 
 
-        file = open(home+'/.pdl/config')
+        with open(home+'/.pdl/config') as f:
+            lines = f.readlines()
 
-        content = file.readlines()
-
-        for line in content:
-            line = line.replace(' ','')
             if self.debug:
-                print('line: '+str(line)+lineno())
-
-            if 'api_key' in line:
-                (key_name, key_value) = line.split('=')
+                print(str(lines)+lineno())
+                
+            for line in lines:
+                line = line.replace(" ",'')
                 if self.debug:
-                    print('name: '+str(key_name)+lineno())
-                    print('value: '+str(key_value)+lineno())
+                    print('line: '+str(line)+lineno())
 
-                return key_value.strip()
+                if 'api_key' in line:
+                    (key_name, key_value) = line.split('=')
+                    if self.debug:
+                        print('name: '+str(key_name)+lineno())
+                        print('value: '+str(key_value)+lineno())
+
+                    return key_value.strip()
 
 
 
