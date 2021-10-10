@@ -1,30 +1,103 @@
-# source: https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-windows-10
+ function refresh-path {
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") +
+                ";" +
+                [System.Environment]::GetEnvironmentVariable("Path","User")
+}
 
-Set-ExecutionPolicy -Scope CurrentUser
-RemoteSigned
-Get-ExecutionPolicy -List
 
-$script = New-Object Net.WebClient
-$script | Get-Member
-$script.DownloadString("https://chocolatey.org/install.ps1")
-iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Find-PackageProvider -Name "NuGet" -AllVersions
+Install-PackageProvider -Name "NuGet" -Force
 
-choco upgrade chocolatey
 
-choco install -y nano
+$testchoco = powershell choco -v
+if(-not($testchoco)){
+    Write-Output "Seems Chocolatey is not installed, installing now"
+    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+}
+else{
+    Write-Output "Chocolatey Version $testchoco is already installed"
+}
 
-choco install -y python3
+# redirect stderr into stdout
+$p = &{python -V} 2>&1
+if ( $p -Match "is not recognized" )
+{
+    Write-Output "Installing Python"
+    choco install -y python3
+}
+else {
+    # otherwise return as is
+    Write-Output "Python Version $p is already installed"
+}
+refresh-path
+Write-Output "$Env:Path"
 
-python -V
+pip install --upgrade pip
 
-python -m pip install --upgrade pip
 
-mkdir Environments
-cd Environments
+$p = &{virtualenv --version} 2>&1
+Write-Output "$p"
+if ( $p -Match "is not recognized" )
+{
+    Write-Output "Installing virtualenv"
+    pip install --user virtualenv
+}
+else {
+    # otherwise return as is
+    Write-Output "virtualenv $p is already installed"
+}
 
-python -m venv my_env
 
-ls my_env
 
-my_env\Scripts\activate
+Write-Output "Home directory $home"
+
+
+$path = "$home\.pdl"
+If(!(test-path $path))
+{
+      New-Item -ItemType Directory -Force -Path $path
+}
+
+
+
+$path = "$home\.pdl\config"
+If(!(test-path $path))
+{
+     $results = Read-Host -Prompt 'Enter people data labs api key'
+     "[data]" | Out-File -FilePath $path
+     "api_key=$results" | Out-File -FilePath $path -Append
+
+}
+
+
+(get-command python.exe).Path
+
+$path = "$home\.pdl\env"
+If(!(test-path $path))
+{
+   Write-Output "Creating virtualenv"
+   cd $home\.pdl
+   virtualenv --python (get-command python.exe).Path env
+}else{
+
+   Write-Output "Virtual environment already created"
+
+}
+
+
+$path = "$home\.pdl\env\Scripts\pdl"
+
+If(!(test-path $path))
+{
+   Write-Output "Installing peopledatalabs"
+   cd $home\.pdl\env
+   .\Scripts\activate
+   pip install peopledatalabs
+   .\Scripts\deactivate
+
+}else{
+   Write-Output "Peopledatalabs package already installed"
+}
+
 

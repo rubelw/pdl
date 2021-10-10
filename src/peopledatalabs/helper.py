@@ -197,7 +197,7 @@ class helper(object):
         home = str(Path.home())
 
         if sys.platform == 'win32':
-            file = open(home+'/.pdl/config','r', encoding='cp1252')
+            file = open(home+'/.pdl/config','r', encoding='utf-16le')
             content = file.readlines()
         else:
             file = open(home+'/.pdl/config')
