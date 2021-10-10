@@ -1,5 +1,4 @@
 from pathlib import Path
-import configparser
 from peopledatalabs.__init__ import __version__
 import subprocess
 import sys
@@ -197,18 +196,21 @@ class helper(object):
 
         home = str(Path.home())
 
-        config = configparser.ConfigParser()
-        config.read(home+'/.pdl/config')
 
-        if self.debug:
-            print('sections: '+str(config.sections()))
+        file = open(home+'/.pdl/config')
 
-        if 'data' in config.sections():
-            if self.debug:
-                print('found data section')
-            if 'api_key' in config['data']:
-                return config['data']['api_key']
-        return None
+        content = file.readlines()
+
+        for line in content:
+            if 'api_key' in line:
+                (name,value) = line.split('=')
+                name = name.strip()
+                value = value.strip()
+
+
+        return value
+
+
 
     def yes_or_no(self, question):
         """
