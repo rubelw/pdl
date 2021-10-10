@@ -62,7 +62,7 @@ class helper(object):
         if self.debug:
             print('latest version: '+str(latest_version)+lineno())
 
-        if latest_version.strip() != version.strip():
+        if latest_version != version.strip():
             if self.debug:
                 print('Need to install new version of pdl'+lineno())
                 print('Latest version: '+str(latest_version)+lineno())
