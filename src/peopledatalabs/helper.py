@@ -201,14 +201,13 @@ class helper(object):
 
         content = file.readlines()
 
+        api_key = None
         for line in content:
             if 'api_key' in line:
-                (name,value) = line.split('=')
-                name = name.strip()
-                value = value.strip()
+                (key_name, key_value) = line.split('=')
+                api_key = key_value.strip()
 
-
-        return value
+        return api_key
 
 
 
