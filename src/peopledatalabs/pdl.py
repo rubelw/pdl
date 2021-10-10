@@ -31,14 +31,15 @@ def main() -> None:
     if myhelper.check_if_config_directory_exists():
         if myhelper. check_if_config_file_exists():
             api_key = myhelper.get_api_key()
+            pdl_version = "v5"
+            pdl_url = "https://api.peopledatalabs.com/" + pdl_version + "/person/enrich"
 
             if args.debug:
                 print('api_key: '+str(api_key))
 
-            if api_key:
-
-                pdl_version = "v5"
-                pdl_url = "https://api.peopledatalabs.com/" + pdl_version + "/person/enrich"
+            if not api_key:
+                print('Could not find api key')
+                sys.exit(1)
 
 
             while loop:  ## While loop which will keep going until loop = False
