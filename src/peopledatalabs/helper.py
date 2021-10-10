@@ -7,6 +7,8 @@ import os
 import json
 import inspect
 import urllib.request as urllib2
+from distutils.version import LooseVersion
+
 
 def lineno():
     """Returns the current line number in our program."""
@@ -54,7 +56,8 @@ class helper(object):
         if self.debug:
             print(str(versions)+lineno())
 
-        latest_version = versions[-1]
+        lv = [LooseVersion(v) for v in versions]
+        latest_version = lv[-1]
 
         if self.debug:
             print('latest version: '+str(latest_version)+lineno())
