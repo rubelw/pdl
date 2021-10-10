@@ -203,11 +203,15 @@ class helper(object):
 
         api_key = None
         for line in content:
+            if self.debug:
+                print('line: '+str(line)+lineno())
             if 'api_key' in line:
                 (key_name, key_value) = line.split('=')
-                api_key = key_value.strip()
+                if self.debug:
+                    print('name: '+str(key_name)+lineno())
+                    print('value: '+str(key_value)+lineno())
 
-        return api_key
+                return key_value.strip()
 
 
 
