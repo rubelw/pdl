@@ -57,6 +57,10 @@ class helper(object):
             print(str(versions)+lineno())
 
         lv = [LooseVersion(v) for v in versions]
+
+        if self.debug:
+            print('loose versions: '+str(lv)+lineno())
+            
         latest_version = lv[-1]
 
         if self.debug:
