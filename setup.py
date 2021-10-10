@@ -21,7 +21,7 @@ setup_requires = (
 
 setup(
     name='peopledatalabs',
-    version='0.1.27',
+    version='0.1.28',
     author='Will Rubel',
     author_email='willrubel@gmail.com',
     description=DESCRIPTION,
